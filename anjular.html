@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</meta>
+</head>
+
+<body>
+  
+<div ng-app="myApp" ng-controller = "myctrl" ng-init = "name= 'yuhaibo'">
+  <ul>
+    <li  ng-repeat = "xx in names">{{xx.Name}}</li>
+  </ul>
+  <button ng-click = 'sayHello()'></button>
+  <!-- <label>{{name}}</label> -->
+</div>
+
+
+<script >
+//   var app = angular.module('myApp',[]);
+//   app.controller('myctrl',function($scope){
+//     $scope.sayHello = function(){
+//        $scope.names = [
+// {name:'Jani',country:'Norway'},
+// {name:'Hege',country:'Sweden'},
+// {name:'Kai',country:'Denmark'}]
+//     }
+   
+//   })
+
+var app = angular.module('myApp', []);
+app.controller('myctrl', function($scope, $http) {
+  $http.get("http://localhost/sitedata.php")
+  .success(function (response) {$scope.names = response.sites;});
+  
+});
+</script>
+</body>
+</html>
+<!-- <div ng-app="">
+ 	<p>名字 : <input type="text" ng-model="name"></p>
+ 	<h1>Hello {{name}}</h1>
+</div> -->
+<!-- <div ng-app="myApp"  ng-controller = "myCtrl" ng-init = "number = 1;const= 2;firstname = 'john';lastname = 'john';names=[
+{name:'Jani',country:'Norway'},
+{name:'Hege',country:'Sweden'},
+{name:'Kai',country:'Denmark'}]">
+ 
+ <p>我的第一个表达式{{ number + 5}}</p>
+ <p>姓名： <span ng-bind="firstname + ' ' + lastname"></span></p>
+ 名: <input type="text" ng-model="firstName"><br>
+ 姓: <input type="text" ng-model="lastName"><br>
+ <p >你要输入的值为</p>
+ <input type="text" ng-model = "firstName"> </input>
+ <p>你输入的为{{firstName}}</p>
+<br>
+   姓名: {{firstName + " " + lastName}}
+   <ul>
+   	<li ng-repeat = "x in names">
+   		{{x.name + ',' +x.country}}
+   	</li>
+   </ul>
+   <button ng-click='sayHello()'>132123131</button>
+   <input type="email" name="myAddress" ng-model="text">
+   {{myApp.myAddress.$error}}
+
+    <input type="email" name="myAddress" ng-model="myText" required></p>
+    <h1>状态</h1>
+    {{myApp.myAddress.$valid}}
+    {{myApp.myAddress.$dirty}}
+    {{myApp.myAddress.$touched}}
+    
+    <form ng-app="" name="myForm" ng-init="myText = 'test@runoob.com'">
+    Email:
+    <input type="email" name="myAddress" ng-model="myText" required></p>
+    <h1>状态</h1>
+    {{myForm.myAddress.$valid}}
+    {{myForm.myAddress.$dirty}}
+    {{myForm.myAddress.$touched}}
+
+    
+  <!--    <!-- 判断if else -->
+    <!-- <div ng-if = myForm.myAddress.$valid = true> -->
+
+    <!-- <span>12321</span> -->
+    
+    <!-- </div> -->
+    
+   
+<!-- </div> -->
+
+<!-- </form>
+</div> 
+<script >
+	var app = angular.module('myApp', []);
+	app.controller('myCtrl', function($scope){
+    $scope.firstName= "John";
+    $scope.lastName= "Doe";
+    $scope.sayHello =  function(){
+      $scope.firstname = "123213321"
+    }
+	});
+
+</script> -->
+<!-- <div ng-app="myApp" ng-controller="myCtrl">
+ 
+名: <input type="text" ng-model="firstName"><br>
+姓: <input type="text" ng-model="lastName"><br>
+<br>
+姓名: {{firstName + " " + lastName}}
+ 
+</div>
+ 
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.firstName= "John";
+    $scope.lastName= "Doe";
+});
+</script> -->
